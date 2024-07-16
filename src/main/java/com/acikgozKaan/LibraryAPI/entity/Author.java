@@ -16,7 +16,7 @@ public class Author {
     @Column(name = "author_name",nullable = false)
     private String name;
 
-    @Column(name = "author_birthDate",nullable = false)
+    @Column(name = "author_birthdate",nullable = false)
     private int birthDate;
 
     @Column(name = "author_country",nullable = false)
