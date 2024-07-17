@@ -1,5 +1,7 @@
 package com.acikgozKaan.LibraryAPI.core;
 
+import com.acikgozKaan.LibraryAPI.core.exception.NotFoundException;
+import com.acikgozKaan.LibraryAPI.core.result.Result;
 import com.acikgozKaan.LibraryAPI.core.result.ResultData;
 import com.acikgozKaan.LibraryAPI.core.utilies.ResultHelper;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,11 @@ import java.util.List;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Result> handleNotFoundException(NotFoundException e) {
+        return new ResponseEntity<>(ResultHelper.notFound(e.getMessage()),HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResultData<List<String>>> handleValidationErrors(MethodArgumentNotValidException e) {
