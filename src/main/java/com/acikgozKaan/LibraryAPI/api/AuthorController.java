@@ -6,6 +6,7 @@ import com.acikgozKaan.LibraryAPI.core.utilies.ResultHelper;
 import com.acikgozKaan.LibraryAPI.dto.request.author.AuthorSaveRequest;
 import com.acikgozKaan.LibraryAPI.dto.response.AuthorResponse;
 import com.acikgozKaan.LibraryAPI.entity.Author;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class AuthorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private ResultData<AuthorResponse> save(@RequestBody AuthorSaveRequest authorSaveRequest) {
+    private ResultData<AuthorResponse> save(@Valid @RequestBody AuthorSaveRequest authorSaveRequest) {
 
         Author author = new Author(
                 authorSaveRequest.getName(),
