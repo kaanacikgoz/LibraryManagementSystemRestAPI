@@ -1,6 +1,7 @@
 package com.acikgozKaan.LibraryAPI.api;
 
 import com.acikgozKaan.LibraryAPI.business.abstracts.IAuthorService;
+import com.acikgozKaan.LibraryAPI.core.result.Result;
 import com.acikgozKaan.LibraryAPI.core.result.ResultData;
 import com.acikgozKaan.LibraryAPI.core.utilies.ResultHelper;
 import com.acikgozKaan.LibraryAPI.dto.request.author.AuthorSaveRequest;
@@ -50,6 +51,14 @@ public class AuthorController {
     @ResponseStatus(HttpStatus.OK)
     private List<Author> get() {
         return this.authorService.get();
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    private ResultData<Author> delete(@PathVariable("id")int id) {
+        Author deletedAuthor = this.authorService.getById(id);
+        this.authorService.delete(id);
+        return ResultHelper.deleted(deletedAuthor);
     }
 
 }

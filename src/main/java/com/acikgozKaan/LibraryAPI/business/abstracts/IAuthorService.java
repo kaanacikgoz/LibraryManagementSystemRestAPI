@@ -7,9 +7,13 @@ import java.util.List;
 
 public interface IAuthorService {
 
-    Author save(Author author);
+    void save(Author author);
 
     List<Author> get();
+
+    Author getById(int id);
+
+    void delete(int id);
 
 
 }
