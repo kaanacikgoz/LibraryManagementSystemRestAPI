@@ -10,6 +10,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/v1/authors")
 public class AuthorController {
@@ -42,6 +44,12 @@ public class AuthorController {
         );
 
         return ResultHelper.created(authorResponse);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    private List<Author> get() {
+        return this.authorService.get();
     }
 
 }

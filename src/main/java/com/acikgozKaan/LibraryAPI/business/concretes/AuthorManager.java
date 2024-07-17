@@ -5,6 +5,8 @@ import com.acikgozKaan.LibraryAPI.dao.AuthorRepo;
 import com.acikgozKaan.LibraryAPI.entity.Author;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthorManager implements IAuthorService {
 
@@ -17,6 +19,11 @@ public class AuthorManager implements IAuthorService {
     @Override
     public Author save(Author author) {
         return this.authorRepo.save(author);
+    }
+
+    @Override
+    public List<Author> get() {
+        return this.authorRepo.findAll();
     }
 
 }
