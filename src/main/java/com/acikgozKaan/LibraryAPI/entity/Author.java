@@ -29,6 +29,13 @@ public class Author {
 
     }
 
+    public Author(String name, int birthDate, String country, List<Book> bookList) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.country = country;
+        this.bookList = bookList;
+    }
+
     public int getId() {
         return id;
     }
@@ -59,6 +66,14 @@ public class Author {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
 }
