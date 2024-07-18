@@ -19,11 +19,17 @@ public class Category {
     @Column(name = "category_description",nullable = false)
     private String description;
 
-    @ManyToMany(mappedBy = "categoryList",cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "categoryList",fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private List<Book> bookList;
 
     public Category() {
 
+    }
+
+    public Category(String name, String description, List<Book> bookList) {
+        this.name = name;
+        this.description = description;
+        this.bookList = bookList;
     }
 
     public int getId() {
@@ -48,6 +54,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
 }
