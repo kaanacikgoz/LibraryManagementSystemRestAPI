@@ -16,24 +16,24 @@ public class Book {
     @Column(name = "book_name",nullable = false)
     private String name;
 
-    @Column(name = "book_publicationYear",nullable = false)
+    @Column(name = "book_publicationyear",nullable = false)
     private int publicationYear;
 
     @Column(name = "book_stock")
     private int stock;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "book_author_id", referencedColumnName = "author_id")
+    @ManyToOne
+    @JoinColumn(name = "book_author_id",referencedColumnName = "author_id")
     private Author author;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
 
-    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "book",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<BookBorrowing> bookBorrowingList;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "books2categories",
             joinColumns = {@JoinColumn(name = "books2categories_book_id")},
@@ -43,6 +43,16 @@ public class Book {
 
     public Book() {
 
+    }
+
+    public Book(String name, int publicationYear, int stock, Author author, Publisher publisher, List<BookBorrowing> bookBorrowingList, List<Category> categoryList) {
+        this.name = name;
+        this.publicationYear = publicationYear;
+        this.stock = stock;
+        this.author = author;
+        this.publisher = publisher;
+        this.bookBorrowingList = bookBorrowingList;
+        this.categoryList = categoryList;
     }
 
     public int getId() {
@@ -75,6 +85,38 @@ public class Book {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public List<BookBorrowing> getBookBorrowingList() {
+        return bookBorrowingList;
+    }
+
+    public void setBookBorrowingList(List<BookBorrowing> bookBorrowingList) {
+        this.bookBorrowingList = bookBorrowingList;
+    }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
 }
