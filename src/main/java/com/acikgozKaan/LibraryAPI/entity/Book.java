@@ -1,5 +1,6 @@
 package com.acikgozKaan.LibraryAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class Book {
     @JoinColumn(name = "book_author_id",referencedColumnName = "author_id")
     private Author author;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
