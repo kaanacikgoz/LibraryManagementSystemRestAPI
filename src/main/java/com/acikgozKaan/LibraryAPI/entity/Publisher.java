@@ -29,6 +29,13 @@ public class Publisher {
 
     }
 
+    public Publisher(String name, int establishmentYear, String address, List<Book> bookList) {
+        this.name = name;
+        this.establishmentYear = establishmentYear;
+        this.address = address;
+        this.bookList = bookList;
+    }
+
     public int getId() {
         return id;
     }
@@ -59,6 +66,14 @@ public class Publisher {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
 }
