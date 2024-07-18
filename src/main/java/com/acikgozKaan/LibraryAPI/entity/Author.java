@@ -1,5 +1,6 @@
 package com.acikgozKaan.LibraryAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class Author {
     @Column(name = "author_country",nullable = false)
     private String country;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
     private List<Book> bookList;
 
