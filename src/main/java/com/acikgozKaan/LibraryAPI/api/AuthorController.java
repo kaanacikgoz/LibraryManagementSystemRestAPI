@@ -1,7 +1,6 @@
 package com.acikgozKaan.LibraryAPI.api;
 
 import com.acikgozKaan.LibraryAPI.business.abstracts.IAuthorService;
-import com.acikgozKaan.LibraryAPI.core.result.Result;
 import com.acikgozKaan.LibraryAPI.core.result.ResultData;
 import com.acikgozKaan.LibraryAPI.core.utilies.ResultHelper;
 import com.acikgozKaan.LibraryAPI.dto.request.author.AuthorSaveRequest;
