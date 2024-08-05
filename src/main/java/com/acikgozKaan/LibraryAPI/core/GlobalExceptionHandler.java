@@ -21,6 +21,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ResultHelper.notFound(e.getMessage()),HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Result> handleIllegalArgumentException(IllegalArgumentException e) {
+        return new ResponseEntity<>(ResultHelper.notFound(e.getMessage()),HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResultData<List<String>>> handleValidationErrors(MethodArgumentNotValidException e) {
         List<String> validationErrorList = e.getBindingResult().getFieldErrors().stream()
