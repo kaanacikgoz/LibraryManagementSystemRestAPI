@@ -9,11 +9,13 @@ public interface IAuthorService {
 
     void save(Author author);
 
-    List<Author> get();
+    void update(Author author);
 
-    Author getById(int id);
+    List<Author> getAll();
 
-    void delete(int id);
+    Author getById(Long id);
+
+    void delete(Long id);
 
 
 }

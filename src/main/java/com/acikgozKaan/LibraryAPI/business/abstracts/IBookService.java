@@ -8,10 +8,12 @@ public interface IBookService {
 
     void save(Book book);
 
-    List<Book> get();
+    void update(Book book);
 
-    Book getById(int id);
+    List<Book> getAll();
 
-    void delete(int id);
+    Book getById(Long id);
+
+    void delete(Long id);
 
 }

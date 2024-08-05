@@ -8,10 +8,10 @@ public interface IPublisherService {
 
     void save(Publisher publisher);
 
-    List<Publisher> get();
+    List<Publisher> getAll();
 
-    Publisher getById(int id);
+    Publisher getById(Long id);
 
-    void delete(int id);
+    void delete(Long id);
 
 }
