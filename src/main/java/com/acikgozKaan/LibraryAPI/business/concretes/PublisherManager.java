@@ -24,19 +24,19 @@ public class PublisherManager implements IPublisherService {
     }
 
     @Override
-    public List<Publisher> get() {
+    public List<Publisher> getAll() {
         return this.publisherRepo.findAll();
     }
 
     @Override
-    public Publisher getById(int id) {
+    public Publisher getById(Long id) {
         return this.publisherRepo.findById(id).orElseThrow(
                 ()->new NotFoundException(Msg.NOT_FOUND)
         );
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         Publisher deletedPublisher = this.getById(id);
         this.publisherRepo.delete(deletedPublisher);
     }

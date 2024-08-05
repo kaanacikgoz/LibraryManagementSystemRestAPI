@@ -24,19 +24,24 @@ public class CategoryManager implements ICategoryService {
     }
 
     @Override
-    public List<Category> get() {
+    public List<Category> getAll() {
         return this.categoryRepo.findAll();
     }
 
     @Override
-    public Category getById(int id) {
+    public Category getById(Long id) {
         return this.categoryRepo.findById(id).orElseThrow(
                 ()->new NotFoundException(Msg.NOT_FOUND)
         );
     }
 
     @Override
-    public void delete(int id) {
+    public List<Category> getByIds(List<Long> ids) {
+        return this.categoryRepo.findAllById(ids);
+    }
+
+    @Override
+    public void delete(Long id) {
         Category deletedCategory = this.getById(id);
         this.categoryRepo.delete(deletedCategory);
     }

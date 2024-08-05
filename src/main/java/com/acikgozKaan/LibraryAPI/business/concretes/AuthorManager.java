@@ -24,19 +24,25 @@ public class AuthorManager implements IAuthorService {
     }
 
     @Override
-    public List<Author> get() {
+    public void update(Author author) {
+        Author updatedAuthor = this.getById(author.getId());
+        authorRepo.save(updatedAuthor);
+    }
+
+    @Override
+    public List<Author> getAll() {
         return this.authorRepo.findAll();
     }
 
     @Override
-    public Author getById(int id) {
+    public Author getById(Long id) {
         return this.authorRepo.findById(id).orElseThrow(
                 ()-> new NotFoundException(Msg.NOT_FOUND)
         );
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         Author author = this.getById(id);
         this.authorRepo.delete(author);
     }

@@ -24,19 +24,25 @@ public class BookManager implements IBookService {
     }
 
     @Override
-    public List<Book> get() {
+    public void update(Book book) {
+        Book updatedBook = this.getById(book.getId());
+        bookRepo.save(updatedBook);
+    }
+
+    @Override
+    public List<Book> getAll() {
         return bookRepo.findAll();
     }
 
     @Override
-    public Book getById(int id) {
+    public Book getById(Long id) {
         return bookRepo.findById(id).orElseThrow(
                 ()->new NotFoundException(Msg.NOT_FOUND)
         );
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(Long id) {
         Book deletedBook = this.getById(id);
         bookRepo.delete(deletedBook);
     }
