@@ -47,12 +47,12 @@ public class CategoryController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     private List<Category> get() {
-        return this.categoryService.get();
+        return this.categoryService.getAll();
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private ResultData<Category> delete(@PathVariable("id")int id) {
+    private ResultData<Category> delete(@PathVariable("id")Long id) {
         Category deletedCategory = this.categoryService.getById(id);
         this.categoryService.delete(id);
         return ResultHelper.deleted(deletedCategory);
