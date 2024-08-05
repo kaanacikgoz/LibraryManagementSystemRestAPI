@@ -1,9 +1,6 @@
 package com.acikgozKaan.LibraryAPI.dto.request.author;
 
-import com.acikgozKaan.LibraryAPI.entity.Book;
 import jakarta.validation.constraints.*;
-
-import java.util.List;
 
 public class AuthorSaveRequest {
 
@@ -15,7 +12,6 @@ public class AuthorSaveRequest {
     private Integer birthDate;
     @NotBlank(message = "Country can not be null or empty")
     private String country;
-    private List<Book> bookList;
 
     public AuthorSaveRequest() {
 
@@ -43,14 +39,6 @@ public class AuthorSaveRequest {
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
     }
 
 }

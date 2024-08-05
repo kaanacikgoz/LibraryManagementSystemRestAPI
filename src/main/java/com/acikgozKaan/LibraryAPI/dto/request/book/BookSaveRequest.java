@@ -1,27 +1,31 @@
 package com.acikgozKaan.LibraryAPI.dto.request.book;
 
-import com.acikgozKaan.LibraryAPI.entity.Author;
-import com.acikgozKaan.LibraryAPI.entity.BookBorrowing;
-import com.acikgozKaan.LibraryAPI.entity.Category;
-import com.acikgozKaan.LibraryAPI.entity.Publisher;
-
-import java.util.List;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 public class BookSaveRequest {
 
+    @NotBlank(message = "Name can not be null or empty")
     private String name;
 
+    @Positive
+    @NotNull(message = "Publication year can not be null or empty")
     private int publicationYear;
 
+    @Positive
+    @NotNull(message = "Stock can not be null or empty")
     private int stock;
 
-    private Author author;
+    @NotNull(message = "Author id can not be null or empty")
+    private Long authorId;
 
-    private Publisher publisher;
+    @NotNull(message = "Publisher id can not be null or empty")
+    private Long publisherId;
 
-    private List<BookBorrowing> bookBorrowingList;
+    //private List<BookBorrowing> bookBorrowingList;
 
-    private List<Category> categoryList;
+    //private List<Category> categoryList;
 
     public BookSaveRequest() {
 
@@ -51,36 +55,20 @@ public class BookSaveRequest {
         this.stock = stock;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
     }
 
-    public Publisher getPublisher() {
-        return publisher;
+    public Long getPublisherId() {
+        return publisherId;
     }
 
-    public void setPublisher(Publisher publisher) {
-        this.publisher = publisher;
-    }
-
-    public List<BookBorrowing> getBookBorrowingList() {
-        return bookBorrowingList;
-    }
-
-    public void setBookBorrowingList(List<BookBorrowing> bookBorrowingList) {
-        this.bookBorrowingList = bookBorrowingList;
-    }
-
-    public List<Category> getCategoryList() {
-        return categoryList;
-    }
-
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+    public void setPublisherId(Long publisherId) {
+        this.publisherId = publisherId;
     }
 
 }

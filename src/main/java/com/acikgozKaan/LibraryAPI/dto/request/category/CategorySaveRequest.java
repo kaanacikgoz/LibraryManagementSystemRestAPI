@@ -6,12 +6,21 @@ import java.util.List;
 
 public class CategorySaveRequest {
 
+    private int id;
     private String name;
     private String description;
     private List<Book> bookList;
 
     public CategorySaveRequest() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
