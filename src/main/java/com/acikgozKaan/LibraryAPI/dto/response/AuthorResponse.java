@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AuthorResponse {
 
-    private int id;
+    private Long id;
     private String name;
     private int birthDate;
     private String country;
@@ -16,7 +16,7 @@ public class AuthorResponse {
 
     }
 
-    public AuthorResponse(int id, String name, int birthDate, String country, List<Book> bookList) {
+    public AuthorResponse(Long id, String name, int birthDate, String country, List<Book> bookList) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -24,11 +24,11 @@ public class AuthorResponse {
         this.bookList = bookList;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

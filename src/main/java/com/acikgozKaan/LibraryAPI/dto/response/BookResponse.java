@@ -9,7 +9,7 @@ import java.util.List;
 
 public class BookResponse {
 
-    private int id;
+    private Long id;
 
     private String name;
 
@@ -29,7 +29,7 @@ public class BookResponse {
 
     }
 
-    public BookResponse(int id, String name, int publicationYear, int stock, Author author, Publisher publisher, List<BookBorrowing> bookBorrowingList, List<Category> categoryList) {
+    public BookResponse(Long id, String name, int publicationYear, int stock, Author author, Publisher publisher, List<BookBorrowing> bookBorrowingList, List<Category> categoryList) {
         this.id = id;
         this.name = name;
         this.publicationYear = publicationYear;
@@ -40,11 +40,11 @@ public class BookResponse {
         this.categoryList = categoryList;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

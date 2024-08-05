@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PublisherResponse {
 
-    private int id;
+    private Long id;
     private String name;
     private int establishmentYear;
     private String address;
@@ -15,7 +15,7 @@ public class PublisherResponse {
     public PublisherResponse() {
     }
 
-    public PublisherResponse(int id, String name, int establishmentYear, String address, List<Book> bookList) {
+    public PublisherResponse(Long id, String name, int establishmentYear, String address, List<Book> bookList) {
         this.id = id;
         this.name = name;
         this.establishmentYear = establishmentYear;
@@ -23,11 +23,11 @@ public class PublisherResponse {
         this.bookList = bookList;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
