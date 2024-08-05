@@ -1,6 +1,5 @@
 package com.acikgozKaan.LibraryAPI.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id",columnDefinition = "serial")
-    private int id;
+    private Long id;
 
     @Column(name = "book_name",nullable = false)
     private String name;
@@ -27,7 +26,6 @@ public class Book {
     @JoinColumn(name = "book_author_id",referencedColumnName = "author_id")
     private Author author;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "book_publisher_id", referencedColumnName = "publisher_id")
     private Publisher publisher;
@@ -47,7 +45,25 @@ public class Book {
 
     }
 
-    public Book(String name, int publicationYear, int stock, Author author, Publisher publisher, List<BookBorrowing> bookBorrowingList, List<Category> categoryList) {
+    public Book(String name, int publicationYear, int stock, Author author, Publisher publisher) {
+        this.name = name;
+        this.publicationYear = publicationYear;
+        this.stock = stock;
+        this.author = author;
+        this.publisher = publisher;
+    }
+
+    public Book(Long id, String name, int publicationYear, int stock, Author author, Publisher publisher) {
+        this.id = id;
+        this.name = name;
+        this.publicationYear = publicationYear;
+        this.stock = stock;
+        this.author = author;
+        this.publisher = publisher;
+    }
+
+    public Book(Long id, String name, int publicationYear, int stock, Author author, Publisher publisher, List<BookBorrowing> bookBorrowingList, List<Category> categoryList) {
+        this.id = id;
         this.name = name;
         this.publicationYear = publicationYear;
         this.stock = stock;
@@ -57,11 +73,11 @@ public class Book {
         this.categoryList = categoryList;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

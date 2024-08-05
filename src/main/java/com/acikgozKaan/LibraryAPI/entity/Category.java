@@ -1,5 +1,6 @@
 package com.acikgozKaan.LibraryAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id",columnDefinition = "serial")
-    private int id;
+    private Long id;
 
     @Column(name = "category_name",nullable = false)
     private String name;
@@ -19,6 +20,7 @@ public class Category {
     @Column(name = "category_description",nullable = false)
     private String description;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "categoryList",fetch = FetchType.EAGER,cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private List<Book> bookList;
 
@@ -32,11 +34,11 @@ public class Category {
         this.bookList = bookList;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

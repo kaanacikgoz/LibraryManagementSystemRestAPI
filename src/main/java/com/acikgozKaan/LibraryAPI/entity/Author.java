@@ -12,7 +12,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id",columnDefinition = "serial")
-    private int id;
+    private Long id;
 
     @Column(name = "author_name",nullable = false)
     private String name;
@@ -24,11 +24,17 @@ public class Author {
     private String country;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "author")
     private List<Book> bookList;
 
     public Author() {
 
+    }
+
+    public Author(String name, int birthDate, String country) {
+        this.name = name;
+        this.birthDate = birthDate;
+        this.country = country;
     }
 
     public Author(String name, int birthDate, String country, List<Book> bookList) {
@@ -38,11 +44,19 @@ public class Author {
         this.bookList = bookList;
     }
 
-    public int getId() {
+    public Author(Long id, String name, int birthDate, String country, List<Book> bookList) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.country = country;
+        this.bookList = bookList;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

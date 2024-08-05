@@ -1,5 +1,6 @@
 package com.acikgozKaan.LibraryAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id",columnDefinition = "serial")
-    private int id;
+    private Long id;
 
     @Column(name = "publisher_name",nullable = false)
     private String name;
@@ -22,6 +23,7 @@ public class Publisher {
     @Column(name = "publisher_address",nullable = false)
     private String address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "publisher",cascade = CascadeType.ALL)
     private List<Book> bookList;
 
@@ -36,11 +38,11 @@ public class Publisher {
         this.bookList = bookList;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
